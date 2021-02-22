@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1 th:text="${titulo}"></h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>nombres</th>
+                <th>consultas</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="paciente: ${pacientes}">
+                <td th:text="${paciente.id}"></td>
+                <td th:text="${paciente.getNombres()}"></td>
+                <td>
+                    <a th:href="@{/view/pacientes/ver/{id}(id=${paciente.id})}">Ver Consultas</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
